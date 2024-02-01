@@ -1,0 +1,48 @@
+ import java.io.*; 
+
+class digoprime {
+    public static void main(String[] args) throws IOException { 
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter a number: ");  
+        int n = Integer.parseInt(br.readLine());
+        int c = 0;
+
+        // Check if the number is prime
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0) {
+                c++;
+            }
+        }
+
+        int a, count = 0;
+        if (c == 2) {
+            while (n > 0) {
+
+                a = n % 10;
+
+                // Check if the digit is prime
+                int i;
+                for (i = 2; i < a; i++) {
+                    if (a % i == 0) {
+                        break;
+                    }
+                }
+
+                // If the loop completed without finding a factor, it's a prime digit
+                if (i == a) {
+                    count++;
+                }
+
+                n = n / 10;
+            }
+
+            if (count == 2) {
+                System.out.println("It's a Digo number");
+            } else {
+                System.out.println("It's not a Digo number");
+            }
+        } else {
+            System.out.println("It's not a prime number");
+        }
+    }
+}
